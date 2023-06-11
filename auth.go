@@ -6,7 +6,6 @@ import (
 	"net/http"
 )
 
-// UpdateAccessToken will renew access token that will be used to access further APIs
 func (c *nishan) UpdateAccessToken() (resp response.Auth) {
 	err := c.request(http.MethodGet, "/authenticate", nil, resp)
 	if err != nil {

@@ -7,7 +7,6 @@ import (
 	"net/http"
 )
 
-// Bioverisys API can be used to verify fingerprint
 func (c *nishan) Bioverisys(req request.Bioverisys) (resp response.Bioverisys) {
 	resp.ErrCode = req.Validate()
 	if resp.ErrCode != errors.Nil {
@@ -23,7 +22,6 @@ func (c *nishan) Bioverisys(req request.Bioverisys) (resp response.Bioverisys) {
 	return
 }
 
-// ContactlessBioverisys API can be used to verify fingerprint
 func (c *nishan) ContactlessBioverisys(req request.ContactlessBioverisys) (resp response.Bioverisys) {
 	resp.ErrCode = req.Validate()
 	if resp.ErrCode != errors.Nil {

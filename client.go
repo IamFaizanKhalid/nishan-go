@@ -12,8 +12,13 @@ import (
 )
 
 type Client interface {
+	// UpdateAccessToken will get a new access token for further APIs calls
 	UpdateAccessToken() response.Auth
+
+	// Ensure customer Identification and eliminate fake identities by verifying your customers digitally.
 	Bioverisys(request.Bioverisys) response.Bioverisys
+
+	// Contactless fingerprint acquisition and matching possible using a smart mobile phone.
 	ContactlessBioverisys(request.ContactlessBioverisys) response.Bioverisys
 
 	request(string, string, interface{}, interface{}) error
