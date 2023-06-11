@@ -3,7 +3,7 @@
 [![Tests](https://github.com/IamFaizanKhalid/nishan-go/actions/workflows/test.yml/badge.svg)](https://github.com/IamFaizanKhalid/nishan-go/actions/workflows/test.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/IamFaizanKhalid/nishan-go)](https://goreportcard.com/report/github.com/IamFaizanKhalid/nishan-go) ![Release](https://img.shields.io/github/v/release/IamFaizanKhalid/nishan-go.svg?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 <hr>
 
-Golang wrapper for [Nadra's Nishan](https://nishan.nadra.gov.pk/) APIs.
+Golang wrapper for [NADRA's Nishan](https://nishan.nadra.gov.pk/) APIs.
 
 ### Installation
 
