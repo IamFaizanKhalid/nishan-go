@@ -39,6 +39,8 @@ func main() {
 		switch response.ErrCode {
 		case errors.FingerprintMismatch:
 			panic("fingerprint didn't match")
+		case errors.FingerIndexUnavailable:
+			panic(fmt.Sprintf("data available only for following finger indexes: %v", response.FingerList))
 		default:
 			panic(response.ErrMessage)
 		}
