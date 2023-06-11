@@ -1,8 +1,8 @@
-package request
+package nishan
 
 import "github.com/IamFaizanKhalid/nishan-go/errors"
 
-type Bioverisys struct {
+type Request struct {
 	// 13 digit citizen number
 	CitizenNo string `json:"citizenNo"`
 
@@ -13,7 +13,7 @@ type Bioverisys struct {
 	FingerIndex int `json:"fingerIndex"`
 }
 
-func (r *Bioverisys) Validate() errors.ErrorCode {
+func (r *Request) Validate() errors.ErrorCode {
 	// citizen number
 	if r.CitizenNo == "" {
 		return errors.CitizenNumEmpty

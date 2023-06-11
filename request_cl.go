@@ -1,8 +1,8 @@
-package request
+package nishan
 
 import "github.com/IamFaizanKhalid/nishan-go/errors"
 
-type ContactlessBioverisys struct {
+type MobileRequest struct {
 	// 13 digit citizen number
 	CitizenNo string `json:"citizenNo"`
 
@@ -22,7 +22,7 @@ type ContactlessBioverisys struct {
 	IMEI string `json:"imei"`
 }
 
-func (r *ContactlessBioverisys) Validate() errors.ErrorCode {
+func (r *MobileRequest) Validate() errors.ErrorCode {
 	// citizen number
 	if r.CitizenNo == "" {
 		return errors.CitizenNumEmpty

@@ -4,28 +4,21 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/IamFaizanKhalid/nishan-go/request"
-	"github.com/IamFaizanKhalid/nishan-go/response"
 	"net/http"
 
 	"github.com/IamFaizanKhalid/nishan-go/errors"
 )
 
 type Client interface {
-	// UpdateAccessToken will get a new access token for further APIs calls
-	UpdateAccessToken() response.Auth
+	VerifyFingerprint(Request) Bioverisys
 
-	// Ensure customer Identification and eliminate fake identities by verifying your customers digitally.
-	Bioverisys(request.Bioverisys) response.Bioverisys
+	VerifyFingerprintFromMobile(MobileRequest) Bioverisys
 
-	// Contactless fingerprint acquisition and matching possible using a smart mobile phone.
-	ContactlessBioverisys(request.ContactlessBioverisys) response.Bioverisys
+	KnowYourCustomer(Request) BioKYC
 
-	// Know your customer. Acquire detailed information about your customer along with digital verification.
-	BioKYC(request.Bioverisys) response.BioKYC
+	KnowYourCustomerFromMobile(MobileRequest) BioKYC
 
-	// Transform and digitize your entire KYC process through contactless KYC.
-	ContactlessBioKYC(request.ContactlessBioverisys) response.BioKYC
+	UpdateAccessToken() Auth
 
 	request(string, string, interface{}, interface{}) error
 }
