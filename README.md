@@ -5,14 +5,14 @@
 
 Golang wrapper for [NADRA's Nishan](https://nishan.nadra.gov.pk/) APIs.
 
-### Installation
+## Installation
 
 ```console
 go get -u github.com/IamFaizanKhalid/nishan-go
 ```
 
 
-### Usage Example
+## Usage Example
 
 ```go
 package main
@@ -49,10 +49,10 @@ func main() {
 ```
 
 
-### References
+## Reference
 - [API Docs](https://nishan.nadra.gov.pk/tech-stack)
 
-### License
+## License
 
 © 2023-time.Now() Faizan Khalid
 
