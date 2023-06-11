@@ -19,9 +19,10 @@ const (
 	OutsidePakistan  ErrorCode = 122
 	MobileNumInvalid ErrorCode = 123
 
-	FingerIndexInvalid      ErrorCode = 151
-	FingerprintEmpty        ErrorCode = 152
-	CitizenNumEmpty         ErrorCode = 153
+	FingerIndexInvalid ErrorCode = 151
+	FingerprintEmpty   ErrorCode = 152
+	CitizenNumEmpty    ErrorCode = 153
+
 	LimitReached            ErrorCode = 155 // for test environment only
 	CitizenNumNotRegistered ErrorCode = 156 // for test environment only
 
