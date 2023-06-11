@@ -10,7 +10,7 @@ import (
 func (c *nishan) UpdateAccessToken() (resp response.Auth) {
 	err := c.request(http.MethodGet, "/authenticate", nil, resp)
 	if err != nil {
-		resp.Error = errors.SendingRequest
+		resp.ErrCode = errors.SendingRequest
 		return
 	}
 

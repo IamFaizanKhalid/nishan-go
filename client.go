@@ -26,8 +26,8 @@ func NewClient(subdomain, apiKey string) (Client, error) {
 	}
 
 	resp := c.UpdateAccessToken()
-	if resp.Error != errors.Nil {
-		return nil, fmt.Errorf("auth error: %s", resp.Message)
+	if resp.ErrCode != errors.Nil {
+		return nil, fmt.Errorf("auth error: %s", resp.ErrMessage)
 	}
 
 	return c, nil

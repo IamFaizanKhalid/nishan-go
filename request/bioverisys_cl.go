@@ -22,7 +22,7 @@ type ContactlessBioverisys struct {
 	IMEI string `json:"imei"`
 }
 
-func (r *ContactlessBioverisys) Validate() errors.Error {
+func (r *ContactlessBioverisys) Validate() errors.ErrorCode {
 	// citizen number
 	if r.CitizenNo == "" {
 		return errors.CitizenNumEmpty

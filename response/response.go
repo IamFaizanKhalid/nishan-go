@@ -4,8 +4,8 @@ import "github.com/IamFaizanKhalid/nishan-go/errors"
 
 type response struct {
 	// Response status code
-	Error errors.Error `json:"code"`
+	ErrCode errors.ErrorCode `json:"code"`
 
 	// Response status message
-	Message string `json:"message"`
+	ErrMessage string `json:"message"`
 }

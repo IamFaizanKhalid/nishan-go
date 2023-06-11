@@ -13,7 +13,7 @@ type Bioverisys struct {
 	FingerIndex int `json:"fingerIndex"`
 }
 
-func (r *Bioverisys) Validate() errors.Error {
+func (r *Bioverisys) Validate() errors.ErrorCode {
 	// citizen number
 	if r.CitizenNo == "" {
 		return errors.CitizenNumEmpty
