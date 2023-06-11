@@ -4,18 +4,21 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/IamFaizanKhalid/nishan-go/request"
+	"github.com/IamFaizanKhalid/nishan-go/response"
 	"net/http"
 
 	"github.com/IamFaizanKhalid/nishan-go/errors"
 )
 
-type nishan struct {
-	baseUrl     string
-	apiKey      string
-	accessToken string
+type Client interface {
+	UpdateAccessToken() response.Auth
+	Bioverisys(request.BioverisysRequest) response.Bioverisys
+
+	request(string, string, interface{}, interface{}) error
 }
 
-func New(subdomain, apiKey string) (*nishan, error) {
+func NewClient(subdomain, apiKey string) (Client, error) {
 	c := &nishan{
 		baseUrl: fmt.Sprintf("https://%s.nadra.gov.pk", subdomain),
 		apiKey:  apiKey,
@@ -29,6 +32,12 @@ func New(subdomain, apiKey string) (*nishan, error) {
 	return c, nil
 }
 
+type nishan struct {
+	baseUrl     string
+	apiKey      string
+	accessToken string
+}
+
 func (c *nishan) request(method, path string, requestObj interface{}, responseObj interface{}) error {
 	// build request
 	var body *bytes.Reader
@@ -40,27 +49,27 @@ func (c *nishan) request(method, path string, requestObj interface{}, responseOb
 		body = bytes.NewReader(requestBytes)
 	}
 
-	request, err := http.NewRequest(method, c.baseUrl+path, body)
+	req, err := http.NewRequest(method, c.baseUrl+path, body)
 	if err != nil {
 		return err
 	}
 
 	// set headers
-	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("Accept", "application/json")
-	request.Header.Set("Authorization", c.apiKey)
-	request.Header.Set("Token", c.accessToken)
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("Authorization", c.apiKey)
+	req.Header.Set("Token", c.accessToken)
 
 	// hit api
-	response, err := http.DefaultClient.Do(request)
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return err
 	}
-	defer response.Body.Close()
+	defer resp.Body.Close()
 
 	// parse response
-	if requestObj != nil {
-		return json.NewDecoder(response.Body).Decode(responseObj)
+	if responseObj != nil {
+		return json.NewDecoder(resp.Body).Decode(responseObj)
 	}
 
 	return nil
