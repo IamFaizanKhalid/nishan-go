@@ -21,6 +21,12 @@ type Client interface {
 	// Contactless fingerprint acquisition and matching possible using a smart mobile phone.
 	ContactlessBioverisys(request.ContactlessBioverisys) response.Bioverisys
 
+	// Know your customer. Acquire detailed information about your customer along with digital verification.
+	BioKYC(request.Bioverisys) response.BioKYC
+
+	// Transform and digitize your entire KYC process through contactless KYC.
+	ContactlessBioKYC(request.ContactlessBioverisys) response.BioKYC
+
 	request(string, string, interface{}, interface{}) error
 }
 

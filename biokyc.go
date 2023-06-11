@@ -21,3 +21,18 @@ func (c *nishan) BioKYC(req request.Bioverisys) (resp response.BioKYC) {
 
 	return
 }
+
+func (c *nishan) ContactlessBioKYC(req request.ContactlessBioverisys) (resp response.BioKYC) {
+	resp.ErrCode = req.Validate()
+	if resp.ErrCode != errors.Nil {
+		return
+	}
+
+	err := c.request(http.MethodPost, "/bioverisysclkyc/verify", req, &resp)
+	if err != nil {
+		resp.ErrCode = errors.SendingRequest
+		return
+	}
+
+	return
+}
