@@ -13,7 +13,8 @@ import (
 
 type Client interface {
 	UpdateAccessToken() response.Auth
-	Bioverisys(request.BioverisysRequest) response.Bioverisys
+	Bioverisys(request.Bioverisys) response.Bioverisys
+	ContactlessBioverisys(request.ContactlessBioverisys) response.Bioverisys
 
 	request(string, string, interface{}, interface{}) error
 }
@@ -25,7 +26,7 @@ func NewClient(subdomain, apiKey string) (Client, error) {
 	}
 
 	resp := c.UpdateAccessToken()
-	if resp.Error != errors.None {
+	if resp.Error != errors.Nil {
 		return nil, fmt.Errorf("auth error: %s", resp.Message)
 	}
 

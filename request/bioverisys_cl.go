@@ -2,7 +2,7 @@ package request
 
 import "github.com/IamFaizanKhalid/nishan-go/errors"
 
-type Bioverisys struct {
+type ContactlessBioverisys struct {
 	// 13 digit citizen number
 	CitizenNo string `json:"citizenNo"`
 
@@ -11,9 +11,18 @@ type Bioverisys struct {
 
 	// Finger index from 1 to 10
 	FingerIndex int `json:"fingerIndex"`
+
+	// A pakistani mobile number
+	MobileNumber string `json:"mobileNumber"`
+
+	Longitude float64 `json:"longitude"`
+	Latitude  float64 `json:"latitude"`
+
+	// IMEI of device
+	IMEI string `json:"imei"`
 }
 
-func (r *Bioverisys) Validate() errors.Error {
+func (r *ContactlessBioverisys) Validate() errors.Error {
 	// citizen number
 	if r.CitizenNo == "" {
 		return errors.CitizenNumEmpty
@@ -32,6 +41,24 @@ func (r *Bioverisys) Validate() errors.Error {
 
 	if r.FingerIndex < 1 || r.FingerIndex > 10 {
 		return errors.FingerIndexInvalid
+	}
+
+	// mobile
+	if !isMobileNumberValid(r.MobileNumber) {
+		return errors.MobileNumInvalid
+	}
+
+	// lat-long
+	if !isLatitudeValid(r.Latitude) {
+		return errors.LatitudeInvalid
+	}
+	if !isLongitudeValid(r.Longitude) {
+		return errors.LongitudeInvalid
+	}
+
+	// imei
+	if !isImeiValid(r.IMEI) {
+		return errors.ImeiInvalid
 	}
 
 	return errors.Nil
