@@ -13,7 +13,8 @@ func isImeiValid(s string) bool {
 	return len(s) == 15 && isNumeric(s)
 }
 
-var mobileRegex = regexp.MustCompile(`^(((\+?92)|0) ?)?3[0-9]{2} ?[0-9]{7}$`)
+// TODO: modify as per Nishan's requirements
+var mobileRegex = regexp.MustCompile(`^((\+?92 ?)|0)?3[0-4][0-9] ?[0-9]{7}$`)
 
 func isMobileNumberValid(s string) bool {
 	return mobileRegex.MatchString(s)
@@ -37,6 +38,6 @@ func isLatitudeValid(lat float64) bool {
 	return lat >= -90 && lat <= 90
 }
 
-func isLongitudeValid(lat float64) bool {
-	return lat >= -180 && lat <= 180
+func isLongitudeValid(lng float64) bool {
+	return lng >= -180 && lng <= 180
 }
