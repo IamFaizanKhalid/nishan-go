@@ -45,7 +45,7 @@ type nishan struct {
 
 func (c *nishan) request(method, path string, requestObj interface{}, responseObj interface{}) error {
 	// build request
-	var body *bytes.Reader
+	body := new(bytes.Reader)
 	if requestObj != nil {
 		requestBytes, err := json.Marshal(requestObj)
 		if err != nil {
